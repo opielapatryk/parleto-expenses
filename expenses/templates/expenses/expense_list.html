@@ -9,6 +9,10 @@
   <button type="submit">search</button>
 </form>
 <br>
+
+<h3>Total amount spent: ${{ total_amount_spent }}</h3>
+
+<br>
 <table border="1">
 	<caption>Expenses</caption>
 	<thead>
@@ -56,4 +60,28 @@
 	{% endfor %}
   </tr>
 </table>
+
+<br>
+<caption>Total Summary Per Year-Month</caption>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Year-Month</th>
+      <th>Total Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for summary in summary_per_year_month %}
+    <tr>
+      <td>{{ summary.year_month }}</td>
+      <td>{{ summary.total_amount|floatformat:2 }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="2">No data available</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
